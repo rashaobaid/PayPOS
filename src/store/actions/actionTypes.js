@@ -7,7 +7,7 @@ export const GET_TODO_ERROR = "GET_TODO_ERROR";
 export const GET_TODO_SUCCESS = "GET_TODO_SUCCESS";
 export const CLOSE_DIALOG = "CLOSE_DIALOG";
 export const FILTERD_CATEGORIES = "FILTERD_CATEGORIES";
-export const TEXT_FILTERD ="TEXT_FILTERD"
+export const TEXT_FILTERD = "TEXT_FILTERD";
 
 export const FETCH_PRODUCTS = "FETCH_PRODUCTS";
 export const ADD_PRODUCT = "ADD_PRODUCT";
@@ -15,8 +15,12 @@ export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const FILTERD_PRODUCTS = "FILTERD_PRODUCTS";
 export const EDIT_PRODUCTS = "EDIT_PRODUCTS";
 
-
 export const SIGN_IN = "SIGN_IN";
-export const LOGIN_SUCCESS="LOGIN_SUCCESS";
-export const LOGIN_FAILED="LOGIN_FAILED";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILED = "LOGIN_FAILED";
 export const LOGOUT = "LOGOUT";
+export const FETCH_USER = "FETCH_USER";
+export const EDIT_USER_INFO = "EDIT_USER_INFO";
+export const ADD_CHECKOUT = "ADD_CHECKOUT";
+export const FETCH_CHECKOUTS = "FETCH_CHECKOUTS";
+export const GET_USER_INFO = "GET_USER_INFO";

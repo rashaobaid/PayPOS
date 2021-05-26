@@ -3,7 +3,11 @@ import { connect } from "react-redux";
 import * as productsActions from "../../store/actions/products";
 import ECTable from '../UtilsComponents/ECTable';
 import  ProductModal from './ProductModal ';
-export const ProductTable = ({products,onInitProducts,onDeleteProduct}) => {
+import userStyles from "./style";
+export const ProductTable = ({products,onInitProducts,onDeleteProduct,flltered_data,filter_text}) => {
+    const classes = userStyles();
+    const tableRows = React.useMemo(()=> filter_text === '' ? products : flltered_data, [products, filter_text])
+
     useEffect(() => {
         onInitProducts();
     }, []);
@@ -12,15 +16,18 @@ export const ProductTable = ({products,onInitProducts,onDeleteProduct}) => {
         <ECTable
             headers={['Code', 'Name', 'categoryName','ProductDescription','tx(%)','Price','Action']}
             rowKeys={['code', 'name','categoryName','description','stockCount','price']}
-            tableRows={products}
+            tableRows={tableRows}
             onDeleteCallback={onDeleteProduct}
             editComponent={(row_props) => <ProductModal {...row_props}/>}
+            customStyle={classes}
         />
     )
 }
 const mapStateToProps = (state) => {
     return {
         products: state.products.products,
+        flltered_data: state.products.flltered_data,
+        filter_text: state.products.filter_text
     }
 };
 const mapDispatchToProps = (dispatch) => {

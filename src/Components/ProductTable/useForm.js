@@ -1,7 +1,7 @@
 import {useState} from 'react';
 
-const useForm =(props_values)=>{
-    const[values,setValues]=useState(props_values || {
+const useForm =()=>{
+    const[values,setValues]=useState({
         name: '',
         rawPrice: 1,
         price: 0,
@@ -9,7 +9,8 @@ const useForm =(props_values)=>{
         categoryId:0,
         description:"",
         stockCount:"",
-        expirationDate:''
+        expirationDate:'',
+        file: {}
     })
 
     const handleChange =e =>{

@@ -1,46 +1,41 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { InputAdornment, OutlinedInput, IconButton, Box } from '@material-ui/core';
 import { Search, Close } from '@material-ui/icons';
-import { connect } from "react-redux";
-import * as categoriesActions from "../../store/actions/categories";
-const SearchBar = ({calculcateFilterdItems,clearFilterText}) => {
+import { useLocation } from "react-router-dom";
+import DateFilter from './DateFilter';
+
+const SearchBar = ({ onChangeTextFilter, onClearFilterText }) => {
+    const location = useLocation();
     const [filterText, setFilterText] = useState('');
-    const handleChangefilterText = e => {setFilterText(calculcateFilterdItems(e.target.value)) }; 
+    const handleChangefilterText = e => {
+        const text = e.target.value;
+        setFilterText(text)
+        onChangeTextFilter(text)
+    };
     const handleclearFilterText = () => {
         setFilterText("")
-        clearFilterText("")
-    }; // not effect the reducer text_filtered
+        onClearFilterText("")
+    };
     return (
-        <Box>
-        <OutlinedInput
-            placeholder="Search..."
-            onChange={handleChangefilterText}
-            value={filterText}
-            startAdornment={
-                <InputAdornment position="start">
-                    <Search />
-                </InputAdornment>
-            }
-            endAdornment={
-                <IconButton position="end" onClick={handleclearFilterText} >
-                    <Close />
-                </IconButton>
-            }
-        />
-       
-    </Box>
+        <div >
+            {/* {location.pathname === '/products' && (<DateFilter />)} */}
+                <OutlinedInput
+                    placeholder="Search..."
+                    onChange={handleChangefilterText}
+                    value={filterText}
+                    startAdornment={
+                        <InputAdornment position="start">
+                            <Search />
+                        </InputAdornment>
+                    }
+                    endAdornment={
+                        <IconButton position="end" onClick={handleclearFilterText} >
+                            <Close />
+                        </IconButton>
+                    }
+                />
+        </div>
     )
 }
-const mapStateToProps = (state) => {
-    return {
-        flltered_data: state.categories.flltered_data, 
-    }
-};
-const mapDispatchToProps = (dispatch) => {
-    return {
-        calculcateFilterdItems:(filterText)=> dispatch(categoriesActions.calculcateFilterdItems(filterText)),
-        clearFilterText:(filterText)=> dispatch(categoriesActions.handleclearFilterText(filterText)),
-    };
-  };
-  export default connect( mapStateToProps, mapDispatchToProps)(SearchBar);
-  
+export default SearchBar;
+

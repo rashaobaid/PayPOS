@@ -1,5 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles((theme) => ({
+    tableContainer: {
+        width:'89%',
+        margin: 'auto'
+      },
     content:{
         marginBottom:'20px'
     },

@@ -1,7 +1,6 @@
 import React from 'react'
-import { TableCell, TableRow, Button } from '@material-ui/core';
+import { TableCell, TableRow} from '@material-ui/core';
 import DeleteRow from './DeleteRow'
-import { Edit } from '@material-ui/icons';
 
 const TableRowComponent = ({ items, keys, onDeleteCallback, editComponent, rowsPerPage, page }) => {
   return (

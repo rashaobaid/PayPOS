@@ -1,0 +1,10 @@
+
+[*] onclick on (+) we will append new empty array to cart [this is a tab cart]
+[*] onclick on (-) we remove last cart 
+[*] onclick add to cart we will do the following:
+    [*] get selected cart 
+    [*] edit/append new product
+    [*] setState with new cart values
+
+[*] pass cart to tabs view
+[*] pass addtocart to product view 

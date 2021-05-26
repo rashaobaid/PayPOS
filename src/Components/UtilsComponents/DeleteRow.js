@@ -30,7 +30,10 @@ const DeleteRow = ({ onDeleteCallback, id }) => {
                    </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size='small' variant="contained" color="primary" onClick={() => onDeleteCallback(id)}>
+                    <Button size='small' variant="contained" color="primary" onClick={() => {
+                        onDeleteCallback(id)
+                        toggleShow(!show)
+                        }}>
                         Yes
                     </Button>
                     <Button size='small' variant="contained" color="secondary" onClick={() => toggleShow(!show)}>

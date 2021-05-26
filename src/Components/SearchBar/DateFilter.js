@@ -1,16 +1,14 @@
-import React from "react";
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import React ,{useState}from "react";
 import { styled } from "@material-ui/core/styles";
-import DateFnsUtils from "@date-io/date-fns";
-import "date-fns";
-import { Button } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
 const DateFilter = () => {
- 
   const ApplyFilterButton = styled(Button)({
     textTransform: "unset",
     backgroundColor: "white",
-    border: "1px solid #ccc",
+    border: ".1px solid #ccc",
     color: "black",
+    marginLeft: "2%",
+    display:'inline'
   });
   const LabelSpan = styled("span")({
     color: "#555",
@@ -19,22 +17,36 @@ const DateFilter = () => {
     marginLeft: "2%",
     marginRight: "2em",
   });
-  const DateFilterContainer = styled("div")({
-    width: "100%",
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "center",
-    marginBottom: "1em",
-  });
-
+  const[values,setValues]=useState({
+    toDate:''||"2017-05-24",
+    fromDate:''||"2017-05-24"
+})
+const handleChange =e =>{
+  const{name,value}=e.target;
+  setValues({
+      ...values,
+      [name]: value
+  })
+};
   return (
-    <DateFilterContainer>
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <span>
         <LabelSpan>Expiration Date</LabelSpan>
-       
-        <ApplyFilterButton variant="contained">Apply Filter</ApplyFilterButton>
-      </MuiPickersUtilsProvider>
-    </DateFilterContainer>
+        <LabelSpan>From</LabelSpan>
+        <TextField
+          type="date"
+          name="fromDate"
+          value={values.fromDate}
+          onChange={handleChange}
+        />
+        <LabelSpan>To</LabelSpan>
+        <TextField
+          type="date"
+          name="toDate"
+          value={values.toDate}
+          onChange={handleChange}
+        />
+     <ApplyFilterButton variant="contained">Apply Filter</ApplyFilterButton>
+    </span>
   );
 };
 export default DateFilter;
